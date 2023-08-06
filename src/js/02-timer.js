@@ -4,6 +4,8 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import swal from 'sweetalert';
 
+import { Report } from 'notiflix/build/notiflix-report-aio';
+
 // swal("Hello world!");
 
 const inputEl = document.getElementById('datetime-picker');
@@ -49,7 +51,7 @@ const options = {
     const currentDate = new Date();
 
     if (selectedDate < currentDate) {
-        swal('Please choose a date in the future');
+      swal('Please choose a date in the future');
       btn.disabled = true;
     } else {
       inputEl.disabled = true;
@@ -64,12 +66,13 @@ const displayTime = timeBack => {
   minutesEl.textContent = addLeadingZero(minutes);
   secondsEl.textContent = addLeadingZero(seconds);
   if (timeBack <= 0) {
+    Report.success('Time is ended', '', 'Okay');
     clearInterval(counter);
     daysEl.textContent = '00';
     hoursEl.textContent = '00';
     minutesEl.textContent = '00';
     secondsEl.textContent = '00';
-    
+
     inputEl.disabled = false;
   }
 };
