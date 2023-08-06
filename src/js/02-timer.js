@@ -52,6 +52,7 @@ const options = {
         swal('Please choose a date in the future');
       btn.disabled = true;
     } else {
+      inputEl.disabled = true;
       btn.disabled = false;
     }
   },
@@ -68,6 +69,8 @@ const displayTime = timeBack => {
     hoursEl.textContent = '00';
     minutesEl.textContent = '00';
     secondsEl.textContent = '00';
+    
+    inputEl.disabled = false;
   }
 };
 
